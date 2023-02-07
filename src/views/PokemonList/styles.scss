@@ -1,0 +1,21 @@
+$breakpoint-tablet: 768px;
+
+main {
+  width: 100%;
+  min-height: 100vh;
+  max-width: 56.25rem;
+  background-color: #f3f3f3;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+  @media (min-width: $breakpoint-tablet) {
+    padding: 1rem 2rem;
+  }
+}
+
+nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}

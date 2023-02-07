@@ -1,0 +1,19 @@
+img {
+  width: 4rem;
+  height: 4rem;
+}
+
+tr.table-row {
+  &:nth-child(odd) {
+    background-color: #efefef;
+  }
+  &:nth-child(even) {
+    background-color: #e7e7e7;
+  }
+  td {
+    &:first-child {
+      max-width: 5rem;
+      padding: 0.5rem;
+    }
+  }
+}

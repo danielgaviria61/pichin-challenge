@@ -1,0 +1,25 @@
+button {
+  border: none;
+  padding: 0.5rem 0.875rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+  &.primary {
+    background-color: #5855EB;
+    color: white;
+    &:hover {
+      background-color: #1B18BD;
+    }
+  }
+  &.secundary {
+    background-color: white;
+    color: #5855EB;
+    border: 0.15rem solid #5855EB;
+    &:hover {
+      background-color: #f3f3f3;
+      color: #1B18BD;
+      border: 0.15rem solid #1B18BD;
+    }
+  }
+}
