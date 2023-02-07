@@ -43,7 +43,7 @@ export const updatePokemon = async (pokemon, callback) => {
       idAuthor: 1,
       type: 'Normal'
     }
-    const result = await pokemonApi.put(`/${pokemon}`, newPokemon);
+    const result = await pokemonApi.put(`/${pokemon.id}`, newPokemon);
     callback(result);
   } catch {
     alert('Ocurrio un error')
