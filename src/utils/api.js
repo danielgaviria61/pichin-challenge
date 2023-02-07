@@ -1,14 +1,14 @@
 import axios from "axios";
 
-// Api URL 'https://bp-pokemons.herokuapp.com/'
+const baseURL = 'https://tribu-ti-staffing-desarrollo-afangwbmcrhucqfh.z01.azurefd.net/pkm-msa-evaluation/pokemon'
 
 const pokemonApi = axios.create({
-  baseURL: `${process.env.PUBLIC_URL}/`
+  baseURL
 });
 
 export const getPokemon = async (callback) => {
   try {
-    const result = await pokemonApi.get('pokemon.json');
+    const result = await pokemonApi.get('/?idAuthor=1');
     callback(result.data);
   } catch {
     alert('Ocurrio un error')
@@ -16,10 +16,17 @@ export const getPokemon = async (callback) => {
 };
 
 export const createPokemon = async (pokemon, callback) => {
-  // change to post
   try {
-    const result = await pokemonApi.get('pokemon.json', pokemon)
-    callback(result);
+    const newPokemon = {
+      ...pokemon,
+      hp: 50,
+      attack: parseInt(pokemon.attack),
+      defense: parseInt(pokemon.defense),
+      idAuthor: 1,
+      type: 'Normal'
+    }
+    const result = await pokemonApi.post('/', newPokemon)
+    callback(result.data);
   } catch {
     alert('Ocurrio un error')
   }
@@ -28,7 +35,15 @@ export const createPokemon = async (pokemon, callback) => {
 export const updatePokemon = async (pokemon, callback) => {
   // change to put
   try {
-    const result = await pokemonApi.get('pokemon.json', pokemon);
+    const newPokemon = {
+      ...pokemon,
+      hp: 50,
+      attack: parseInt(pokemon.attack),
+      defense: parseInt(pokemon.defense),
+      idAuthor: 1,
+      type: 'Normal'
+    }
+    const result = await pokemonApi.put(`/${pokemon}`, newPokemon);
     callback(result);
   } catch {
     alert('Ocurrio un error')
@@ -38,7 +53,7 @@ export const updatePokemon = async (pokemon, callback) => {
 export const deletePokemon = async (id, callback) => {
   //change to delete
   try {
-    const result = await pokemonApi.get('pokemon.json');
+    const result = await pokemonApi.delete(`/${id}`);
     callback(result);
   } catch {
     alert('Ocurrio un error')

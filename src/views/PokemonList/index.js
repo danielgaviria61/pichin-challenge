@@ -45,10 +45,11 @@ const PokemonList = () => {
   }
 
   const handleCreatePokemon = (pokemonData) => {
-    createPokemon(pokemonData, () => {
-      const newPokemonList = [...pokemon, {...pokemonData, id: `pokemon${pokemon.length + 1}`}];
+    createPokemon(pokemonData, (result) => {
+      const newPokemonList = [...pokemon, {...pokemonData, id: result.id}];
       setFilteredPokemon(newPokemonList);
       setPokemon(newPokemonList);
+      setOpenForm(false);
     })
   }
 
@@ -58,7 +59,9 @@ const PokemonList = () => {
 
   useEffect(()=>{
     if(search !== '') {
-      const newPokemonList = pokemon.filter((poke) => poke.name.includes(search));
+      const newPokemonList = pokemon.filter(
+        (poke) => poke.name.toLowerCase().includes(search.toLowerCase())
+      );
       return setFilteredPokemon(newPokemonList);
     }
     return setFilteredPokemon(pokemon);
