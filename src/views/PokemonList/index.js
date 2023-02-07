@@ -26,7 +26,7 @@ const PokemonList = () => {
   }, []);
 
   const handleEditPokemon = (editedPokemon) => {
-    updatePokemon(editedPokemon.id, () => {
+    updatePokemon(editedPokemon, () => {
       const newPokemonList = pokemon.map((poke) => {
         if(poke.id === editedPokemon.id) return editedPokemon;
         return poke;
